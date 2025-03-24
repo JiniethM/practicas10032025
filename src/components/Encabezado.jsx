@@ -16,17 +16,10 @@ const Encabezado = () => {
 
   const handleLogout = async () => {
     try {
-      // Cerrar el offcanvas antes de proceder
       setIsCollapsed(false);
-
-      // Eliminar variables almacenadas en localStorage
       localStorage.removeItem("adminEmail");
       localStorage.removeItem("adminPassword");
-
-      // Cerrar sesión
       await logout();
-
-      // Redirigir al inicio
       navigate("/");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
@@ -35,7 +28,6 @@ const Encabezado = () => {
 
   const handleToggle = () => setIsCollapsed(!isCollapsed);
 
-  // Función de navegación
   const handleNavigate = (path) => {
     navigate(path);
     setIsCollapsed(false);
@@ -100,15 +92,21 @@ const Encabezado = () => {
                 {isCollapsed ? <i className="bi-basket-fill me-2"></i> : null}
                 <strong>Productos</strong>
               </Nav.Link>
+              <Nav.Link
+                onClick={() => handleNavigate("/catalogo")}
+                className={isCollapsed ? "text-black" : "text-white"}
+              >
+                {isCollapsed ? <i className="bi-shop-window me-2"></i> : null}
+                <strong>Catálogo</strong>
+              </Nav.Link>
               {isLoggedIn ? (
-                <>
-                  <Nav.Link 
-                    onClick={handleLogout} 
-                    className={isCollapsed ? "text-black" : "text-white"}
-                  >
-                    Cerrar Sesión
-                  </Nav.Link>
-                </>
+                <Nav.Link 
+                  onClick={handleLogout} 
+                  className={isCollapsed ? "text-black" : "text-white"}
+                >
+                  {isCollapsed ? <i className="bi-box-arrow-right me-2"></i> : null}
+                  Cerrar Sesión
+                </Nav.Link>
               ) : location.pathname === "/" && (
                 <Nav.Link
                   onClick={() => handleNavigate("/")}
