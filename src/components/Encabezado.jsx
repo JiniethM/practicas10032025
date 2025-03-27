@@ -48,7 +48,7 @@ const Encabezado = () => {
             height="30" 
             className="d-inline-block align-top" 
           />{" "}
-          <strong>Ferreteria</strong>
+          <strong>Suplidora de Belleza Jinieth</strong>
         </Navbar.Brand>
         <Navbar.Toggle 
           aria-controls="offcanvasNavbar-expand-sm" 

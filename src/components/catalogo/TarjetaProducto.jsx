@@ -1,6 +1,6 @@
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
 
-const TarjetaProducto = ({ producto }) => {
+const TarjetaProducto = ({ producto, openEditModal }) => {
   return (
     <Col lg={3} md={4} sm={12} className="mb-4">
       <Card>
@@ -11,8 +11,26 @@ const TarjetaProducto = ({ producto }) => {
           <Card.Title>{producto.nombre}</Card.Title>
           <Card.Text>
             Precio: C${producto.precio} <br />
-            Categoría: {producto.categoria}
+            Categoría:{" "}
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              {producto.categoria}
+              {producto.color && (
+                <div
+                  style={{
+                    backgroundColor: producto.color,
+                    width: 15,
+                    height: 15,
+                    borderRadius: "50%",
+                    border: "1px solid #000",
+                  }}
+                  title={`Color: ${producto.color}`}
+                />
+              )}
+            </span>
           </Card.Text>
+          <Button variant="warning" onClick={() => openEditModal(producto)}>
+            Editar
+          </Button>
         </Card.Body>
       </Card>
     </Col>
