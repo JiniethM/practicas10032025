@@ -99,6 +99,16 @@ const Encabezado = () => {
                 {isCollapsed ? <i className="bi-shop-window me-2"></i> : null}
                 <strong>Catálogo</strong>
               </Nav.Link>
+
+              {/* ✅ Nueva opción para vista de Libros */}
+              <Nav.Link
+                onClick={() => handleNavigate("/libros")}
+                className={isCollapsed ? "text-black" : "text-white"}
+              >
+                {isCollapsed ? <i className="bi-book-half me-2"></i> : null}
+                <strong>Libros</strong>
+              </Nav.Link>
+
               {isLoggedIn ? (
                 <Nav.Link 
                   onClick={handleLogout} 
